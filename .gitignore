@@ -165,8 +165,8 @@ cython_debug/
 
 /.vscode
 
-/dataset
 !/dataset/SRU
+/dataset
 
 /foo*
 
