@@ -1,0 +1,35 @@
+##################################################
+# conda create -n unim python=3.10
+# conda activate unim
+# pip install torch==2.1.0 torchvision==0.16.0 torchaudio==2.1.0 --index-url https://download.pytorch.org/whl/cu118
+# pip install -r requirements.txt
+##################################################
+matplotlib
+numpy
+pandas
+scikit_learn
+scipy
+statsmodels
+tqdm
+reformer-pytorch==1.4.4
+lightgbm
+ipykernel
+setproctitle
+tensorboard==2.12.0
+torch-tb-profiler
+sktime
+sympy
+seaborn
+pot
+pyyaml
+xlrd
+tednet
+
+# mamba-ssm==2.1.0
+# if build fails, try to install from 
+# https://github.com/state-spaces/mamba/releases/download/v2.1.0/mamba_ssm-2.1.0+cu118torch2.2cxx11abiFALSE-cp310-cp310-linux_x86_64.whl
+# and 
+# https://github.com/Dao-AILab/causal-conv1d/releases/download/v1.4.0/causal_conv1d-1.4.0+cu118torch2.2cxx11abiFALSE-cp310-cp310-linux_x86_64.whl
+
+# uni2ts
+# clone into repo and install with local setup
