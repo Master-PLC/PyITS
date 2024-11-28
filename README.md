@@ -1,2 +1,2 @@
-# UITS
-A unified toolkit for industrial time-series analytics
+# PyITS
+A Unified Python Toolkit for Industrial Time-Series Analytics
