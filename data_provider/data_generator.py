@@ -54,20 +54,15 @@ class Base_Dataset:
         raise NotImplementedError("This dataset does not support predictive maintenance data generation.")
 
     def generate_data(self, task_name):
-        if task_name == 'soft_sensor':
-            self.generate_soft_sensor_data()
-        elif task_name == 'soft_sensor_ml':
-            self.generate_soft_sensor_data(flatten=True)
-        elif task_name == 'process_monitoring':
-            self.generate_process_monitoring_data()
-        elif task_name == 'process_monitoring_ml':
-            self.generate_process_monitoring_data(flatten=True)
+        flatten = True if 'ml' in task_name else False
+        if 'soft_sensor' in task_name:
+            self.generate_soft_sensor_data(flatten=flatten)
+        elif 'process_monitoring' in task_name:
+            self.generate_process_monitoring_data(flatten=flatten)
         elif task_name == 'fault_diagnosis':
             self.generate_fault_diagnosis_data()
-        elif task_name == 'rul_estimation':
-            self.generate_rul_estimation_data()
-        elif task_name == 'rul_estimation_ml':
-            self.generate_rul_estimation_data(flatten=True)
+        elif 'rul_estimation' in task_name:
+            self.generate_rul_estimation_data(flatten=flatten)
         elif task_name == 'predictive_maintenance':
             self.generate_predictive_maintenance_data()
         else:
