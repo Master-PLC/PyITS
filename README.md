@@ -1,2 +1,2 @@
-# UniMonitor
-Unified framework for industrial monitoring tasks.
+# UITS
+A unified toolkit for industrial time-series analytics
