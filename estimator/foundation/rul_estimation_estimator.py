@@ -17,6 +17,17 @@ warnings.filterwarnings('ignore')
 
 class RUL_Estimation_Estimator(Base_Estimator):
     def __init__(self, args, dataset, model, device=torch.device('cpu'), logger=None):
+        """
+        This is the estimator for RUL estimation task. 
+        explain the rul task and how the model is trained, evaluated and tested for the task. 
+        
+        It inherits from Base_Estimator. It is used to train, evaluate and test the model. It also records the metrics and saves the model. The model is trained with MSE loss or Confidence loss. The model is optimized with Adam optimizer. The learning rate is scheduled with ReduceLROnPlateau. The model is saved with the best performance on the validation set. The model is tested on the test set. The metrics are saved in tensorboard and printed in the console. The predictions and true values are saved in the save_dir. 
+        :param args: arguments
+        :param dataset: dataset object
+        :param model: model object
+        :param device: device
+        :param logger: logger
+        """
         super().__init__(args, dataset, model, device, logger)
 
         assert self.task_name == 'rul_estimation'
@@ -38,6 +49,13 @@ class RUL_Estimation_Estimator(Base_Estimator):
         return criterion
 
     def eval(self, x, y, criterion):
+        """
+        :param x: input data
+        :param y: target data
+        :param criterion: loss function
+        :return: total loss
+        """
+
         self.model.eval()
 
         eval_steps = len(x) // self.args.batch_size
