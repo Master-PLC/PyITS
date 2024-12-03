@@ -132,7 +132,7 @@ Refer to the `data_provider/data_generator.py`, `models/Transformer.py` and `est
 
 ## ❖ Available Datasets
 
-| Dataset 	            | Abbreviation | SS 	  | PM | FD | RUL | PDM |
+| Dataset 	            | Abbreviation | SS 	  | PM | FD | RUL | PdM |
 |----------------------|--------------|-------|----|----|-----|-----|
 | Sulfur Recovery Unit | SRU          | ✅ | ✅   |    |     |     |
 | Debutanizer Column   | DC           | ✅ | ✅   |    |     |     |
