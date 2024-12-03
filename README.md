@@ -130,5 +130,12 @@ We warmly invite you to contribute to PyITS. By committing your code:
 
 Refer to the `data_provider/data_generator.py`, `models/Transformer.py` and `estimator/foundation/soft_sensor_estimator.py` to see how to include your dataset, model and estimator in PyITS.
 
+## ❖ Available Datasets
+
+| Dataset 	            | Abbreviation | SS 	  | PM | FD | RUL | PDM |
+|----------------------|--------------|-------|----|----|-----|-----|
+| Sulfur Recovery Unit | SRU          | ✅ | ✅   |    |     |     |
+| Debutanizer Column   | DC           | ✅ | ✅   |    |     |     |
 
 ## ❖ Acknowledgement
+* We sincerely thank the authors of the book *Soft Sensors for Monitoring and Control of Industrial Processes* for generously providing the Debutanizer Column and Sulfur Recovery Unit datasets.
