@@ -126,11 +126,6 @@ We present you a usage example of performing soft sensor with iTransformer as th
 <summary><b>Click here to see an example applying iTransformer on SRU for soft sensor:</b></summary>
 
 ``` python
-import os
-import sys
-import setproctitle
-import torch
-
 from data_provider.data_generator import Dataset_SRU
 from estimator.foundation.process_monitoring_estimator import Process_Monitoring_Estimator
 from models.iTransformer import Model
@@ -148,11 +143,12 @@ if __name__ == '__main__':
     ## build logger
     logger = Logger(log_dir=args.save_dir, remove_old=args.remove_log)
 
-    ## gpu/cpu setting
+    ## load device
     args.device = load_device(gpu_ids=args.gpu_ids)
 
-    ## build dataset and generate data
+    ## build dataset
     dataset = Dataset_SRU(args, logger)
+    args = dataset.generate_data(task_name=args.task_name)
     train_data = dataset.get_data(flag='train')
 
     ## build model
@@ -164,9 +160,11 @@ if __name__ == '__main__':
     ## training and testing
     estimator.fit()
     estimator.test()
-
 ```
-
+Saving the above code as `toy.py`, you can run it with the following command:
+``` bash
+python toy.py --task_name process_monitoring --model itransformer --data SRU --is_training 1 --pred_len 1
+```
 ## ❖ Contribution and community
 
 We warmly invite you to contribute to PyITS. By committing your code:
