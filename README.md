@@ -1,7 +1,7 @@
 # PyITS
 
 <a href="https://github.com/Master-PLC/PyITS">
-    <img src="./docs/logo1.svg" width="1000" align="">
+    <img src="./docs/logo1.png" width="1000" align="">
 </a>
 
 <h3 align="center">Welcome to PyITS</h3>
@@ -111,7 +111,6 @@ The PyITS framework consists of three main components: data_provider, model, and
 - **`Estimator`**: it wraps the data_provider, model, and decoder for a given task, defining the training and evaluation protocols. The decoder, which is cascaded from the model, transforms the encoded representations into task-specific outputs. For example, in the SS task, the decoder is an affine layer that transforms the representation $z$ into a real-valued estimate of the quality variable $y$; in the PdM task, the decoder is an affine layer followed by a softmax layer that transforms $z$ into a probability vector, indicating the likelihood of anomalies occurring at corresponding time stamps.
 
 
-
 ## ❖ Installation
 
 We will release a package on PyPI and anaconda very soon. Before that, you can install PyITS by cloning it.
@@ -119,8 +118,56 @@ We will release a package on PyPI and anaconda very soon. Before that, you can i
 git clone https://github.com/Master-PLC/PyITS.git
 ```
 
+## ❖ Usage
 
-## ❖ Contribution
+We present you a usage example of performing soft sensor with iTransformer as the model and SRU as the dataset below, you can click it to view.
+
+<details open>
+<summary><b>Click here to see an example applying iTransformer on SRU for soft sensor:</b></summary>
+
+``` python
+import os
+import sys
+import setproctitle
+import torch
+
+from data_provider.data_generator import Dataset_SRU
+from estimator.foundation.process_monitoring_estimator import Process_Monitoring_Estimator
+from models.iTransformer import Model
+from utils.argument_parser import parse_arguments
+from utils.logger import Logger
+from utils.tools import load_device, seed_everything
+
+
+if __name__ == '__main__':
+    args = parse_arguments()
+
+    ## fix seed
+    seed_everything(args.fix_seed)
+
+    ## build logger
+    logger = Logger(log_dir=args.save_dir, remove_old=args.remove_log)
+
+    ## gpu/cpu setting
+    args.device = load_device(gpu_ids=args.gpu_ids)
+
+    ## build dataset and generate data
+    dataset = Dataset_SRU(args, logger)
+    train_data = dataset.get_data(flag='train')
+
+    ## build model
+    model = Model(args).float().to(args.device)
+
+    ## build estimator
+    estimator = Process_Monitoring_Estimator(args, dataset=dataset, model=model, device=args.device, logger=logger)
+
+    ## training and testing
+    estimator.fit()
+    estimator.test()
+
+```
+
+## ❖ Contribution and community
 
 We warmly invite you to contribute to PyITS. By committing your code:
 
@@ -128,14 +175,14 @@ We warmly invite you to contribute to PyITS. By committing your code:
 2. You will be listed as a PyITS contributor and a volunteer developer.
 3. Your contributions will be highlighted in PyITS release notes.
 
-Refer to the `data_provider/data_generator.py`, `models/Transformer.py` and `estimator/foundation/soft_sensor_estimator.py` to see how to include your dataset, model and estimator in PyITS.
+Refer to the `data_provider/data_generator.py`, `models/Transformer.py` and `estimator/foundation/soft_sensor_estimator.py` to see how to include your own dataset, model and estimator in PyITS.
 
-## ❖ Available Datasets
-
-| Dataset 	            | Abbreviation | SS 	  | PM | FD | RUL | PdM |
-|----------------------|--------------|-------|----|----|-----|-----|
-| Sulfur Recovery Unit | SRU          | ✅ | ✅   |    |     |     |
-| Debutanizer Column   | DC           | ✅ | ✅   |    |     |     |
+We invite you to join the PyITS community on [WeChat (微信公众号)](https://mp.weixin.qq.com/s/2knuGZMFh5FhFdgE4DJR4Q?token=313674024&lang=zh_CN). We also run a group chat on WeChat,
+  and you can get the access by scanning the [QR code](https://mp.weixin.qq.com/s/2knuGZMFh5FhFdgE4DJR4Q?token=313674024&lang=zh_CN).
+By joining the community, you can get the latest updates on PyITS, share your ideas, and discuss with other members. 
 
 ## ❖ Acknowledgement
-* We sincerely thank the authors of the book *Soft Sensors for Monitoring and Control of Industrial Processes* for generously providing the Debutanizer Column and Sulfur Recovery Unit datasets.
+
+Some aspects of the implementation are based on the following repositories:
+- Foundation models: https://github.com/thuml/Time-Series-Library.
+- Tutorials: https://pypots.com, https://pythonot.github.io.

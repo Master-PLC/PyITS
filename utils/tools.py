@@ -1,6 +1,6 @@
 import argparse
 import os
-
+import random
 import matplotlib.pyplot as plt
 import numpy as np
 import seaborn as sns
@@ -294,3 +294,33 @@ class _ParameterDict(nn.ParameterDict):
             child_lines.append('  (' + k + '): ' + parastr)
         tmpstr = '\n'.join(child_lines)
         return tmpstr
+
+
+def load_device(gpu_ids):
+    ## can not use torch.cuda.is_available() before os.environ["CUDA_VISIBLE_DEVICES"] = gpu_ids, otherwise it will not work
+    use_gpu = True if gpu_ids != '-1' else False
+    device = torch.device('cpu')
+
+    if use_gpu:
+        device_ids = [i for i, id_ in enumerate(gpu_ids.replace(' ', '').split(','))]
+        os.environ["CUDA_VISIBLE_DEVICES"] = gpu_ids
+
+        if torch.cuda.is_available():
+            device = torch.device(f'cuda:0')  # Primary GPU
+            if len(device_ids) > 1:
+                print(f'Using multiple GPUs: {gpu_ids}')
+            else:
+                print(f'Using single GPU: cuda:{gpu_ids}')
+        else:
+            print('Using CPU')
+    else:
+        print('Using CPU')
+
+    return device
+
+
+def seed_everything(seed):
+    random.seed(seed)
+    torch.manual_seed(seed)
+    torch.cuda.manual_seed(seed)
+    np.random.seed(seed)
