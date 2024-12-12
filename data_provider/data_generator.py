@@ -154,16 +154,16 @@ class Dataset_SRU(Base_Dataset):
             self.scaler.fit(data_train)
             data_train, data_eval, data_test = self.scaler.transform(data_train), self.scaler.transform(data_eval), self.scaler.transform(data_test)
 
-        data_train = np.lib.stride_tricks.sliding_window_view(data_train, window_shape=(self.seq_len+self.pred_len), axis=0).transpose((0, 2, 1))
-        data_eval = np.lib.stride_tricks.sliding_window_view(data_eval, window_shape=(self.seq_len+self.pred_len), axis=0).transpose((0, 2, 1))
-        data_test = np.lib.stride_tricks.sliding_window_view(data_test, window_shape=(self.seq_len+self.pred_len), axis=0).transpose((0, 2, 1))
+        data_train = np.lib.stride_tricks.sliding_window_view(data_train, window_shape=(self.seq_len+1), axis=0).transpose((0, 2, 1))
+        data_eval = np.lib.stride_tricks.sliding_window_view(data_eval, window_shape=(self.seq_len+1), axis=0).transpose((0, 2, 1))
+        data_test = np.lib.stride_tricks.sliding_window_view(data_test, window_shape=(self.seq_len+1), axis=0).transpose((0, 2, 1))
 
-        self.train_data = [data_train[:, :self.seq_len, :], data_train[:, -(self.label_len+self.pred_len):, -len(ycols):]]  # [N, L, Dx], [N, S+P, Dy]
-        self.eval_data = [data_eval[:, :self.seq_len, :], data_eval[:, -(self.label_len+self.pred_len):, -len(ycols):]]
-        self.test_data = [data_test[:, :self.seq_len, :], data_test[:, -(self.label_len+self.pred_len):, -len(ycols):]]
+        self.train_data = [data_train[:, :self.seq_len, :], data_train[:, -(self.label_len+1):, -len(ycols):]]  # [N, L, Dx], [N, S+1, Dy]
+        self.eval_data = [data_eval[:, :self.seq_len, :], data_eval[:, -(self.label_len+1):, -len(ycols):]]
+        self.test_data = [data_test[:, :self.seq_len, :], data_test[:, -(self.label_len+1):, -len(ycols):]]
 
         if flatten:
-            self.train_data = self.train_data[0].reshape(self.train_data[0].shape[0], -1), self.train_data[1].reshape(self.train_data[1].shape[0], -1)  # [N, L*Dx], [N, (S+P)*Dy]
+            self.train_data = self.train_data[0].reshape(self.train_data[0].shape[0], -1), self.train_data[1].reshape(self.train_data[1].shape[0], -1)  # [N, L*Dx], [N, (S+1)*Dy]
             self.eval_data = self.eval_data[0].reshape(self.eval_data[0].shape[0], -1), self.eval_data[1].reshape(self.eval_data[1].shape[0], -1)
             self.test_data = self.test_data[0].reshape(self.test_data[0].shape[0], -1), self.test_data[1].reshape(self.test_data[1].shape[0], -1)
 

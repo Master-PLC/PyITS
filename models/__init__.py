@@ -1,9 +1,10 @@
 from . import (DLSTM, DTGRU, FITS, LSTM, MCN, MCTAN, MICN, RSN, TCN, TR_LT,
                AdaNet, Autoformer, Crossformer, DeepPLS, DLformer, DLinear,
                ETSformer, FEDformer, FiLM, FreTS, Informer, Koopa, LightTS,
-               Nonstationary_Transformer, PatchTST, Pathformer, PAttn,
-               Pyraformer, Reformer, SCINet, SegRNN, TiDE, TimeMixer, TimesNet,
-               TimeXer, Transformer, Triformer, TSMixer, iTransformer)
+               MambaSimple, Nonstationary_Transformer, PatchTST, Pathformer,
+               PAttn, Pyraformer, Reformer, SCINet, SegRNN, TiDE, TimeMixer,
+               TimesNet, TimeXer, Transformer, Triformer, TSMixer,
+               iTransformer)
 
 MODEL_DICT = {
     'TimesNet': TimesNet,
@@ -45,4 +46,5 @@ MODEL_DICT = {
     'AdaNet': AdaNet,
     'TR_LT': TR_LT,
     'MCN': MCN,
+    'Mamba': MambaSimple
 }

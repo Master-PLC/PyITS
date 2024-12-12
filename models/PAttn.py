@@ -9,7 +9,7 @@ from layers.Transformer_EncDec import Encoder, EncoderLayer
 
 class Model(nn.Module):
     """
-    Paper link: https://arxiv.org/abs/2406.16964
+    Paper link: https://openreview.net/pdf?id=DV15UbHCY1
     """
     supported_tasks = ['soft_sensor', 'process_monitoring', 'rul_estimation', 'fault_diagnosis', 'predictive_maintenance']
 

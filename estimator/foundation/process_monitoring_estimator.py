@@ -20,8 +20,6 @@ class Process_Monitoring_Estimator(Base_Estimator):
 
         assert self.task_name == 'process_monitoring'
         self.label_len = args.label_len
-        self.pred_len = args.pred_len
-        assert self.pred_len == 1
 
     def _select_optimizer(self):
         model_optim = optim.Adam(self.model.parameters(), lr=self.args.learning_rate)
@@ -50,7 +48,7 @@ class Process_Monitoring_Estimator(Base_Estimator):
             batch_y = torch.tensor(y[batch_index], device=self.device)  # [B, S+1, Dy]
 
             # decoder input
-            dec_inp = torch.zeros_like(batch_y[:, -self.pred_len:, :]).float()
+            dec_inp = torch.zeros_like(batch_y[:, -1:, :]).float()
             dec_inp = torch.cat([batch_y[:, :self.label_len, :], dec_inp], dim=1).float()  # [B, S+1, Dy]
 
             # encoder - decoder
@@ -59,8 +57,8 @@ class Process_Monitoring_Estimator(Base_Estimator):
             else:
                 outputs = self.model(batch_x, None, dec_inp, None)  # [B, 1, Dy]
 
-            outputs = outputs[:, -self.pred_len:].squeeze(1)  # [B, Dy], since pred_len=1
-            batch_y = batch_y[:, -self.pred_len:].squeeze(1)  # [B, Dy], since pred_len=1
+            outputs = outputs[:, -1:].squeeze(1)  # [B, Dy], since pred_len=1
+            batch_y = batch_y[:, -1:].squeeze(1)  # [B, Dy], since pred_len=1
 
             preds.append(outputs.detach().cpu())
             trues.append(batch_y.detach().cpu())
@@ -70,7 +68,7 @@ class Process_Monitoring_Estimator(Base_Estimator):
             batch_y = torch.tensor(y[(idx + 1) * self.args.batch_size:], device=self.device)  # [B, S+1, Dy]
 
             # decoder input
-            dec_inp = torch.zeros_like(batch_y[:, -self.pred_len:, :]).float()
+            dec_inp = torch.zeros_like(batch_y[:, -1:, :]).float()
             dec_inp = torch.cat([batch_y[:, :self.label_len, :], dec_inp], dim=1).float()  # [B, S+1, Dy]
 
             # encoder - decoder
@@ -79,8 +77,8 @@ class Process_Monitoring_Estimator(Base_Estimator):
             else:
                 outputs = self.model(batch_x, None, dec_inp, None)  # [B, 1, Dy]
 
-            outputs = outputs[:, -self.pred_len:].squeeze(1)  # [B, Dy], since pred_len=1
-            batch_y = batch_y[:, -self.pred_len:].squeeze(1)  # [B, Dy], since pred_len=1
+            outputs = outputs[:, -1:].squeeze(1)  # [B, Dy], since pred_len=1
+            batch_y = batch_y[:, -1:].squeeze(1)  # [B, Dy], since pred_len=1
 
             preds.append(outputs.detach().cpu())
             trues.append(batch_y.detach().cpu())
@@ -126,7 +124,7 @@ class Process_Monitoring_Estimator(Base_Estimator):
                 batch_y = torch.tensor(y[batch_index], device=self.device)  # [B, S+1, Dy]
 
                 # decoder input
-                dec_inp = torch.zeros_like(batch_y[:, -self.pred_len:, :]).float()
+                dec_inp = torch.zeros_like(batch_y[:, -1:, :]).float()
                 dec_inp = torch.cat([batch_y[:, :self.label_len, :], dec_inp], dim=1).float()  # [B, S+1, Dy]
 
                 # encoder - decoder
@@ -136,8 +134,8 @@ class Process_Monitoring_Estimator(Base_Estimator):
                     outputs = self.model(batch_x, None, dec_inp, None)  # [B, 1, Dy]
                     attns = None
 
-                outputs = outputs[:, -self.pred_len:].squeeze(1)  # [B, Dy], since pred_len=1
-                batch_y = batch_y[:, -self.pred_len:].squeeze(1)  # [B, Dy], since pred_len=1
+                outputs = outputs[:, -1:].squeeze(1)  # [B, Dy], since pred_len=1
+                batch_y = batch_y[:, -1:].squeeze(1)  # [B, Dy], since pred_len=1
 
                 loss = 0
                 if self.args.rec_lambda:
@@ -209,7 +207,7 @@ class Process_Monitoring_Estimator(Base_Estimator):
             batch_y = torch.tensor(y[batch_index], device=self.device)  # [B, S+1, Dy]
 
             # decoder input
-            dec_inp = torch.zeros_like(batch_y[:, -self.pred_len:, :]).float()
+            dec_inp = torch.zeros_like(batch_y[:, -1:, :]).float()
             dec_inp = torch.cat([batch_y[:, :self.label_len, :], dec_inp], dim=1).float()  # [B, S+1, Dy]
 
             # encoder - decoder
@@ -218,8 +216,8 @@ class Process_Monitoring_Estimator(Base_Estimator):
             else:
                 outputs = self.model(batch_x, None, dec_inp, None)  # [B, 1, Dy]
 
-            outputs = outputs[:, -self.pred_len:]  # [B, 1, Dy], since pred_len=1
-            batch_y = batch_y[:, -self.pred_len:]  # [B, 1, Dy], since pred_len=1
+            outputs = outputs[:, -1:]  # [B, 1, Dy], since pred_len=1
+            batch_y = batch_y[:, -1:]  # [B, 1, Dy], since pred_len=1
 
             inp = batch_x.cpu().numpy()
             outputs = outputs.detach().cpu().numpy()
@@ -239,7 +237,7 @@ class Process_Monitoring_Estimator(Base_Estimator):
             batch_y = torch.tensor(y[(idx + 1) * self.args.test_batch_size:], device=self.device)  # [B, S+1, Dy]
 
             # decoder input
-            dec_inp = torch.zeros_like(batch_y[:, -self.pred_len:, :]).float()
+            dec_inp = torch.zeros_like(batch_y[:, -1:, :]).float()
             dec_inp = torch.cat([batch_y[:, :self.label_len, :], dec_inp], dim=1).float()  # [B, S+1, Dy]
 
             # encoder - decoder
@@ -248,8 +246,8 @@ class Process_Monitoring_Estimator(Base_Estimator):
             else:
                 outputs = self.model(batch_x, None, dec_inp, None)  # [B, 1, Dy]
 
-            outputs = outputs[:, -self.pred_len:]  # [B, 1, Dy], since pred_len=1
-            batch_y = batch_y[:, -self.pred_len:]  # [B, 1, Dy], since pred_len=1
+            outputs = outputs[:, -1:]  # [B, 1, Dy], since pred_len=1
+            batch_y = batch_y[:, -1:]  # [B, 1, Dy], since pred_len=1
 
             inputs.append(batch_x.cpu().numpy())
             preds.append(outputs.detach().cpu().numpy())

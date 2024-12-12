@@ -82,7 +82,7 @@ class FourierCrossAttention(nn.Module):
     def __init__(self, in_channels, out_channels, seq_len_q, seq_len_kv, modes=64, mode_select_method='random',
                  activation='tanh', policy=0, num_heads=8):
         super(FourierCrossAttention, self).__init__()
-        print(' fourier enhanced cross attention used!')
+        print('fourier enhanced cross attention used!')
         """
         1D Fourier Cross Attention layer. It does FFT, linear transform, attention mechanism and Inverse FFT.    
         """

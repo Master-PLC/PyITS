@@ -16,7 +16,7 @@ class Model(nn.Module):
         super().__init__()
         self.task_name = configs.task_name
         self.seq_len = configs.seq_len
-        self.pred_len = configs.pred_len if self.task_name in ['process_monitoring'] else configs.seq_len
+        self.pred_len = 1 if self.task_name in ['process_monitoring'] else configs.seq_len
 
         # Series decomposition block from Autoformer
         self.decompsition = series_decomp(configs.moving_avg)

@@ -78,7 +78,7 @@ def AffiliationMetrics(pred, true):
 def metric_collector(pred, true, task_name='soft_sensor', **kwargs):
     if task_name in [
         'soft_sensor', 'process_monitoring', 'rul_estimation',
-        'soft_sensor_ml', 'process_monitoring_ml', 'rul_estimation_ml'
+        'ml_soft_sensor', 'ml_process_monitoring', 'ml_rul_estimation'
     ]:
         assert pred.ndim == 2
         mae = MAE(pred, true)
@@ -92,7 +92,7 @@ def metric_collector(pred, true, task_name='soft_sensor', **kwargs):
             'mape': mape.item(), 'mspe': mspe.item(), 'r2': r2
         }
 
-    elif task_name in ['fault_diagnosis', 'fault_diagnosis_ml']:
+    elif task_name in ['fault_diagnosis', 'ml_fault_diagnosis']:
         accuracy = accuracy_score(true, pred)
         precision = precision_score(true, pred, average='weighted', zero_division=1)
         recall = recall_score(true, pred, average='weighted', zero_division=1)
@@ -115,7 +115,7 @@ def metric_collector(pred, true, task_name='soft_sensor', **kwargs):
 
         return metrics
 
-    elif task_name in ['predictive_maintenance', 'predictive_maintenance_ml']:
+    elif task_name in ['predictive_maintenance', 'ml_predictive_maintenance']:
         accuracy = accuracy_score(true, pred)
         precision = precision_score(true, pred, average='weighted', zero_division=1)
         recall = recall_score(true, pred, average='weighted', zero_division=1)

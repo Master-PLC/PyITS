@@ -40,7 +40,7 @@ class ResBlock(nn.Module):
 
 
 class Model(nn.Module):
-    """paper link: https://arxiv.org/pdf/2304.08424.pdf 
+    """paper link: https://openreview.net/pdf?id=pCbC3aQB5W
     """
     supported_tasks = ['soft_sensor', 'process_monitoring', 'rul_estimation', 'fault_diagnosis', 'predictive_maintenance']
 

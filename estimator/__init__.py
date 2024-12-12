@@ -6,9 +6,12 @@ from .foundation.process_monitoring_estimator import \
 from .foundation.rul_estimation_estimator import RUL_Estimation_Estimator
 from .foundation.soft_sensor_estimator import Soft_Sensor_Estimator
 from .ml.ml_soft_sensor_estimator import ML_Soft_Sensor_Estimator
+from .ml.ml_process_monitoring_estimator import ML_Process_Monitoring_Estimator
 
 ML_ESTIMATOR_DICT = {
     'ml_soft_sensor': ML_Soft_Sensor_Estimator,
+    'ml_process_monitoring': ML_Process_Monitoring_Estimator,
+    'ml_rul_estimation': ML_Soft_Sensor_Estimator,
 }
 
 ESTIMATOR_DICT = {

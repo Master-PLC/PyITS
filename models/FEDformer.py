@@ -25,7 +25,7 @@ class Model(nn.Module):
         self.task_name = configs.task_name
         self.seq_len = configs.seq_len
         self.label_len = configs.label_len
-        self.pred_len = configs.pred_len if self.task_name in ['process_monitoring'] else configs.seq_len
+        self.pred_len = 1 if self.task_name in ['process_monitoring'] else configs.seq_len
         self.c_out = configs.c_out
 
         self.version = configs.version
@@ -120,18 +120,18 @@ class Model(nn.Module):
 
         if self.task_name in ['process_monitoring']:
             # decomp init
-            mean = torch.mean(x_enc, dim=1).unsqueeze(1).repeat(1, self.pred_len, 1)  # [B, P, Dx]
+            mean = torch.mean(x_enc, dim=1).unsqueeze(1)  # [B, 1, Dx]
             seasonal_init, trend_init = self.decomp(x_enc)  # [B, L, Dx], [B, L, Dx]
             # decoder input
-            trend_init = torch.cat([trend_init[:, -self.label_len:, :], mean], dim=1)  # [B, S+P, Dx]
-            seasonal_init = F.pad(seasonal_init[:, -self.label_len:, :], (0, 0, 0, self.pred_len))  # [B, S+P, Dx]
+            trend_init = torch.cat([trend_init[:, -self.label_len:, :], mean], dim=1)  # [B, S+1, Dx]
+            seasonal_init = F.pad(seasonal_init[:, -self.label_len:, :], (0, 0, 0, 1))  # [B, S+1, Dx]
 
             # dec
-            dec_out = self.dec_embedding(seasonal_init[..., -self.c_out:], x_mark_dec)  # [B, S+P, d_model]
+            dec_out = self.dec_embedding(seasonal_init[..., -self.c_out:], x_mark_dec)  # [B, S+1, d_model]
             seasonal_part, trend_part = self.decoder(dec_out, enc_out, x_mask=None, cross_mask=None, trend=trend_init[..., -self.c_out:])  # [B, S, Dy], [B, S, Dy]
             # final
             dec_out = trend_part + seasonal_part
-            return dec_out[:, -self.pred_len:, :]
+            return dec_out[:, -1:, :]
 
         else:
             dec_out = self.projection(enc_out)

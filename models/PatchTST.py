@@ -33,7 +33,7 @@ class FlattenHead(nn.Module):
 
 class Model(nn.Module):
     """
-    Paper link: https://arxiv.org/pdf/2211.14730.pdf
+    Paper link: https://openreview.net/pdf?id=Jbdc0vTOcol
     """
     supported_tasks = ['soft_sensor', 'process_monitoring', 'rul_estimation', 'fault_diagnosis', 'predictive_maintenance']
 

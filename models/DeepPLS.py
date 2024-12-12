@@ -129,7 +129,7 @@ class Model:
         into the current nonlinear features. See the right column of Page 8 in the original article.
         Only effective when use_nonlinear_mapping == True.
     """
-    supported_tasks = ['ml_soft_sensor', 'ml_rul_estimation', 'ml_fault_diagnosis']
+    supported_tasks = ['ml_soft_sensor', 'ml_rul_estimation', 'ml_process_monitoring']
 
     def __init__(self, configs):
         self.lv_dimensions = configs.lv_dimensions

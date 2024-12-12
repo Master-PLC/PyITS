@@ -7,7 +7,7 @@ from layers.Decoders import OutputBlock
 
 class Model(nn.Module):
     """
-    Paper link: https://arxiv.org/pdf/2311.06184.pdf
+    Paper link: https://papers.neurips.cc/paper_files/paper/2023/file/f1d16af76939f476b5f040fd1398c0a3-Paper-Conference.pdf
     """
     supported_tasks = ['soft_sensor', 'process_monitoring', 'fault_diagnosis', 'rul_estimation', 'predictive_maintenance']
 

@@ -25,14 +25,12 @@ class Model(nn.Module):
         self.enc_in = configs.enc_in
         self.c_out = configs.c_out
         self.seq_len = configs.seq_len
-        self.pred_len = configs.pred_len
         self.seg_len = 12
         self.win_size = 2
         self.task_name = configs.task_name
 
         # The padding operation to handle invisible sgemnet length
         self.pad_in_len = ceil(1.0 * configs.seq_len / self.seg_len) * self.seg_len
-        self.pad_out_len = ceil(1.0 * configs.pred_len / self.seg_len) * self.seg_len
         self.in_seg_num = self.pad_in_len // self.seg_len
         self.out_seg_num = ceil(self.in_seg_num / (self.win_size ** (configs.e_layers - 1)))
         self.head_nf = configs.d_model * self.out_seg_num
@@ -57,6 +55,9 @@ class Model(nn.Module):
 
         # Decoder
         if self.task_name in ['process_monitoring']:
+            pred_len = 1
+            self.pad_out_len = ceil(1.0 * pred_len / self.seg_len) * self.seg_len
+
             self.dec_pos_embedding = nn.Parameter(torch.randn(1, configs.enc_in, (self.pad_out_len // self.seg_len), configs.d_model))
 
             self.decoder = Decoder(
@@ -100,7 +101,7 @@ class Model(nn.Module):
         if self.task_name in ['process_monitoring']:
             dec_in = repeat(self.dec_pos_embedding, 'b ts_d l d -> (repeat b) ts_d l d', repeat=x_enc.shape[0])  # [B, Dx, out_seg_num, d_model]
             dec_out = self.decoder(dec_in, enc_out)
-            return dec_out[:, -self.pred_len:, -self.c_out:]
+            return dec_out[:, -1:, -self.c_out:]
 
         else:
             enc_out = enc_out[-1].permute(0, 1, 3, 2)  # [B, Dx, d_model, out_seg_num]

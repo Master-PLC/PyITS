@@ -84,7 +84,7 @@ class Model(nn.Module):
     """DTGRU: Dual-Thread Gated Recurrent Unit for Gear  Remaining Useful Life Prediction
     Paper link: https://ieeexplore.ieee.org/document/9931971
     """
-    supported_tasks = ['rul_estimation']
+    supported_tasks = ['soft_sensor', 'process_monitoring', 'fault_diagnosis', 'rul_estimation', 'predictive_maintenance']
 
     def __init__(self, configs):
         """

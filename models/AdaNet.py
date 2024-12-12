@@ -396,7 +396,7 @@ class Model(nn.Module):
     """AdaNet: An Adaptive and Dynamical Neural Network for  Machine Remaining Useful Life Prediction
     Paper link: https://ieeexplore.ieee.org/document/10065450
     """
-    supported_tasks = ['rul_estimation']
+    supported_tasks = ['soft_sensor', 'process_monitoring', 'fault_diagnosis', 'rul_estimation', 'predictive_maintenance']
 
     def __init__(self, configs):
         super().__init__()

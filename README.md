@@ -59,46 +59,46 @@ The symbol `✅` indicates the algorithm is available for the corresponding task
 
 | Type 	| Model 	| Paper 	| SS 	| PM 	| FD 	| RUL 	| PdM 	| Remarks 	|
 |---	|---	|---	|---	|---	|---	|---	|---	|---	|
-| Foundation model 	| Autoformer 	| NIPS2021 	| ✅ 	| ✅ 	| ✅ 	| ✅ 	| ✅ 	| Transformer-based time-series foundational model 	|
-| Foundation model 	| Crossformer 	| ICLR2023 	| ✅ 	| ✅ 	| ✅ 	| ✅ 	| ✅ 	| Transformer-based time-series foundational model 	|
-| Foundation model 	| ETSformer 	| arxiv 	| ✅ 	| ✅ 	| ✅ 	| ✅ 	| ✅ 	| Transformer-based time-series foundational model 	|
-| Foundation model 	| FEDformer 	| ICML2022 	| ✅ 	| ✅ 	| ✅ 	| ✅ 	| ✅ 	| Transformer-based time-series foundational model 	|
-| Foundation model 	| Informer 	| AAAI2021 	| ✅ 	| ✅ 	| ✅ 	| ✅ 	| ✅ 	| Transformer-based time-series foundational model 	|
-| Foundation model 	| Nonstationary Transformer 	| NIPS2022 	| ✅ 	| ✅ 	| ✅ 	| ✅ 	| ✅ 	| Transformer-based time-series foundational model 	|
-| Foundation model 	| PatchTST 	| ICLR2023 	| ✅ 	| ✅ 	| ✅ 	| ✅ 	| ✅ 	| Transformer-based time-series foundational model 	|
-| Foundation model 	| Pathformer 	| ICLR2024 	| ✅ 	| ✅ 	| ✅ 	| ✅ 	| ✅ 	| Transformer-based time-series foundational model 	|
-| Foundation model 	| PAttn 	| NIPS2024 	| ✅ 	| ✅ 	| ✅ 	| ✅ 	| ✅ 	| Transformer-based time-series foundational model 	|
-| Foundation model 	| Pyraformer 	| ICLR2022 	| ✅ 	| ✅ 	| ✅ 	| ✅ 	| ✅ 	| Transformer-based time-series foundational model 	|
-| Foundation model 	| Reformer 	| ICLR2020 	| ✅ 	| ✅ 	| ✅ 	| ✅ 	| ✅ 	| Transformer-based time-series foundational model 	|
-| Foundation model 	| TimeXer 	| NIPS2024 	| ✅ 	| ✅ 	| ✅ 	| ✅ 	| ✅ 	| Transformer-based time-series foundational model 	|
-| Foundation model 	| Transformer 	| NIPS2017 	| ✅ 	| ✅ 	| ✅ 	| ✅ 	| ✅ 	| Transformer-based time-series foundational model 	|
-| Foundation model 	| iTransformer 	| ICLR2024 	| ✅ 	| ✅ 	| ✅ 	| ✅ 	| ✅ 	| Transformer-based time-series foundational model 	|
-| Foundation model 	| FITS 	| arxiv 	| ✅ 	| ✅ 	| ✅ 	| ✅ 	| ✅ 	| MLP-based time-series foundational model 	|
-| Foundation model 	| DLinear 	| AAAI2023 	| ✅ 	| ✅ 	| ✅ 	| ✅ 	| ✅ 	| MLP-based time-series foundational model 	|
-| Foundation model 	| LightTS 	| PACM2023 	| ✅ 	| ✅ 	| ✅ 	| ✅ 	| ✅ 	| MLP-based time-series foundational model 	|
-| Foundation model 	| FreTS 	| NIPS2023 	| ✅ 	| ✅ 	| ✅ 	| ✅ 	| ✅ 	| MLP-based time-series foundational model 	|
-| Foundation model 	| TiDE 	| arxiv 	| ✅ 	| ✅ 	| ✅ 	| ✅ 	| ✅ 	| MLP-based time-series foundational model 	|
-| Foundation model 	| TimeMixer 	| ICLR2024 	| ✅ 	| ✅ 	| ✅ 	| ✅ 	| ✅ 	| MLP-based time-series foundational model 	|
-| Foundation model 	| Triformer 	| IJCAI2022 	| ✅ 	| ✅ 	| ✅ 	| ✅ 	| ✅ 	| MLP-based time-series foundational model 	|
-| Foundation model 	| TSMixer 	| TMLR2023 	| ✅ 	| ✅ 	| ✅ 	| ✅ 	| ✅ 	| MLP-based time-series foundational model 	|
-| Foundation model 	| Mamba 	| arxiv 	| ✅ 	| ✅ 	| ✅ 	| ✅ 	| ✅ 	| RNN-based time-series foundational model 	|
+| Foundation model 	| Autoformer 	| [NIPS2021](https://proceedings.neurips.cc/paper_files/paper/2021/file/bcc0d400288793e8bdcd7c19a8ac0c2b-Paper.pdf) 	| ✅ 	| ✅ 	| ✅ 	| ✅ 	| ✅ 	| Transformer-based time-series foundational model 	|
+| Foundation model 	| Crossformer 	| [ICLR2023](https://openreview.net/pdf?id=vSVLM2j9eie) 	| ✅ 	| ✅ 	| ✅ 	| ✅ 	| ✅ 	| Transformer-based time-series foundational model 	|
+| Foundation model 	| ETSformer 	| [arxiv](https://arxiv.org/abs/2202.01381) 	| ✅ 	| ✅ 	| ✅ 	| ✅ 	| ✅ 	| Transformer-based time-series foundational model 	|
+| Foundation model 	| FEDformer 	| [ICML2022](https://proceedings.mlr.press/v162/zhou22g.html) 	| ✅ 	| ✅ 	| ✅ 	| ✅ 	| ✅ 	| Transformer-based time-series foundational model 	|
+| Foundation model 	| Informer 	| [AAAI2021](https://ojs.aaai.org/index.php/AAAI/article/view/17325) 	| ✅ 	| ✅ 	| ✅ 	| ✅ 	| ✅ 	| Transformer-based time-series foundational model 	|
+| Foundation model 	| Nonstationary Transformer 	| [NIPS2022](https://openreview.net/pdf?id=ucNDIDRNjjv) 	| ✅ 	| ✅ 	| ✅ 	| ✅ 	| ✅ 	| Transformer-based time-series foundational model 	|
+| Foundation model 	| PatchTST 	| [ICLR2023](https://openreview.net/pdf?id=Jbdc0vTOcol) 	| ✅ 	| ✅ 	| ✅ 	| ✅ 	| ✅ 	| Transformer-based time-series foundational model 	|
+| Foundation model 	| Pathformer 	| [ICLR2024](https://openreview.net/pdf?id=lJkOCMP2aW) 	| ✅ 	| ✅ 	| ✅ 	| ✅ 	| ✅ 	| Transformer-based time-series foundational model 	|
+| Foundation model 	| PAttn 	| [NIPS2024](https://openreview.net/pdf?id=DV15UbHCY1) 	| ✅ 	| ✅ 	| ✅ 	| ✅ 	| ✅ 	| Transformer-based time-series foundational model 	|
+| Foundation model 	| Pyraformer 	| [ICLR2022](https://openreview.net/pdf?id=0EXmFzUn5I) 	| ✅ 	| ✅ 	| ✅ 	| ✅ 	| ✅ 	| Transformer-based time-series foundational model 	|
+| Foundation model 	| Reformer 	| [ICLR2020](https://openreview.net/forum?id=rkgNKkHtvB) 	| ✅ 	| ✅ 	| ✅ 	| ✅ 	| ✅ 	| Transformer-based time-series foundational model 	|
+| Foundation model 	| TimeXer 	| [NIPS2024](https://arxiv.org/pdf/2402.19072) 	| ✅ 	| ✅ 	| ✅ 	| ✅ 	| ✅ 	| Transformer-based time-series foundational model 	|
+| Foundation model 	| Transformer 	| [NIPS2017](https://dl.acm.org/doi/pdf/10.5555/3295222.3295349) 	| ✅ 	| ✅ 	| ✅ 	| ✅ 	| ✅ 	| Transformer-based time-series foundational model 	|
+| Foundation model 	| iTransformer 	| [ICLR2024](https://openreview.net/pdf?id=JePfAI8fah) 	| ✅ 	| ✅ 	| ✅ 	| ✅ 	| ✅ 	| Transformer-based time-series foundational model 	|
+| Foundation model 	| FITS 	| [ICLR2024](https://openreview.net/pdf?id=bWcnvZ3qMb) 	| ✅ 	| ✅ 	| ✅ 	| ✅ 	| ✅ 	| MLP-based time-series foundational model 	|
+| Foundation model 	| DLinear 	| [AAAI2023](https://ojs.aaai.org/index.php/AAAI/article/view/26317) 	| ✅ 	| ✅ 	| ✅ 	| ✅ 	| ✅ 	| MLP-based time-series foundational model 	|
+| Foundation model 	| LightTS 	| [PACMMOD2023](https://dl.acm.org/doi/abs/10.1145/3589316) 	| ✅ 	| ✅ 	| ✅ 	| ✅ 	| ✅ 	| MLP-based time-series foundational model 	|
+| Foundation model 	| FreTS 	| [NIPS2023](https://papers.neurips.cc/paper_files/paper/2023/file/f1d16af76939f476b5f040fd1398c0a3-Paper-Conference.pdf) 	| ✅ 	| ✅ 	| ✅ 	| ✅ 	| ✅ 	| MLP-based time-series foundational model 	|
+| Foundation model 	| TiDE 	| [TMLR2023](https://openreview.net/pdf?id=pCbC3aQB5W) 	| ✅ 	| ✅ 	| ✅ 	| ✅ 	| ✅ 	| MLP-based time-series foundational model 	|
+| Foundation model 	| TimeMixer 	| [ICLR2024](https://openreview.net/pdf?id=7oLshfEIC2) 	| ✅ 	| ✅ 	| ✅ 	| ✅ 	| ✅ 	| MLP-based time-series foundational model 	|
+| Foundation model 	| Triformer 	| [IJCAI2022](https://www.ijcai.org/proceedings/2022/0277.pdf) 	| ✅ 	| ✅ 	| ✅ 	| ✅ 	| ✅ 	| MLP-based time-series foundational model 	|
+| Foundation model 	| TSMixer 	| [TMLR2023](https://openreview.net/pdf?id=wbpxTuXgm0) 	| ✅ 	| ✅ 	| ✅ 	| ✅ 	| ✅ 	| MLP-based time-series foundational model 	|
+| Foundation model 	| Mamba 	| [arxiv](https://arxiv.org/abs/2312.00752) 	| ✅ 	| ✅ 	| ✅ 	| ✅ 	| ✅ 	| RNN-based time-series foundational model 	|
 | Foundation model 	| LSTM 	|  	| ✅ 	| ✅ 	| ✅ 	| ✅ 	| ✅ 	| RNN-based time-series foundational model 	|
-| Foundation model 	| SegRNN 	| arxiv 	| ✅ 	| ✅ 	| ✅ 	| ✅ 	| ✅ 	| RNN-based time-series foundational model 	|
-| Foundation model 	| MICN 	| ICLR2023 	| ✅ 	| ✅ 	| ✅ 	| ✅ 	| ✅ 	| CNN-based time-series foundational model 	|
-| Foundation model 	| SCINet 	| NIPS2022 	| ✅ 	| ✅ 	| ✅ 	| ✅ 	| ✅ 	| CNN-based time-series foundational model 	|
-| Foundation model 	| TCN 	| arxiv 	| ✅ 	| ✅ 	| ✅ 	| ✅ 	| ✅ 	| CNN-based time-series foundational model 	|
-| Foundation model 	| TimesNet 	| ICLR2023 	| ✅ 	| ✅ 	| ✅ 	| ✅ 	| ✅ 	| CNN-based time-series foundational model 	|
-| Foundation model 	| Koopa 	| NIPS2023 	| ✅ 	| ✅ 	| ✅ 	| ✅ 	| ✅ 	| Other time-series foundational model 	|
-| Foundation model 	| FiLM 	| NIPS2022 	| ✅ 	| ✅ 	| ✅ 	| ✅ 	| ✅ 	| Other time-series foundational model 	|
-| Task-specific model 	| DLSTM 	| TII2022 	| ✅ 	| ✅ 	| ✅ 	| ✅ 	| ✅ 	| Originally developed for SS task 	|
-| Task-specific model 	| DTGRU 	| TII2023 	| ✅ 	| ✅ 	| ✅ 	| ✅ 	| ✅ 	| Originally developed for RUL task 	|
+| Foundation model 	| SegRNN 	| [arxiv](https://arxiv.org/abs/2308.11200.pdf) 	| ✅ 	| ✅ 	| ✅ 	| ✅ 	| ✅ 	| RNN-based time-series foundational model 	|
+| Foundation model 	| MICN 	| [ICLR2023](https://openreview.net/pdf?id=zt53IDUR1U) 	| ✅ 	| ✅ 	| ✅ 	| ✅ 	| ✅ 	| CNN-based time-series foundational model 	|
+| Foundation model 	| SCINet 	| [NIPS2022](https://papers.nips.cc/paper_files/paper/2022/file/266983d0949aed78a16fa4782237dea7-Paper-Conference.pdf) 	| ✅ 	| ✅ 	| ✅ 	| ✅ 	| ✅ 	| CNN-based time-series foundational model 	|
+| Foundation model 	| TCN 	| [arxiv](https://arxiv.org/abs/1803.01271) 	| ✅ 	| ✅ 	| ✅ 	| ✅ 	| ✅ 	| CNN-based time-series foundational model 	|
+| Foundation model 	| TimesNet 	| [ICLR2023](https://openreview.net/pdf?id=ju_Uqw384Oq) 	| ✅ 	| ✅ 	| ✅ 	| ✅ 	| ✅ 	| CNN-based time-series foundational model 	|
+| Foundation model 	| Koopa 	| [NIPS2023](https://proceedings.neurips.cc/paper_files/paper/2023/file/28b3dc0970fa4624a63278a4268de997-Paper-Conference.pdf) 	| ✅ 	| ✅ 	| ✅ 	| ✅ 	| ✅ 	| Other time-series foundational model 	|
+| Foundation model 	| FiLM 	| [NIPS2022](https://openreview.net/pdf?id=zTQdHSQUQWc) 	| ✅ 	| ✅ 	| ✅ 	| ✅ 	| ✅ 	| Other time-series foundational model 	|
+| Task-specific model 	| DLSTM 	| [TII2022](https://ieeexplore.ieee.org/document/9531471) 	| ✅ 	| ✅ 	| ✅ 	| ✅ 	| ✅ 	| Originally developed for SS task 	|
+| Task-specific model 	| DTGRU 	| [TII2023](https://ieeexplore.ieee.org/document/9931971) 	| ✅ 	| ✅ 	| ✅ 	| ✅ 	| ✅ 	| Originally developed for RUL task 	|
 | Task-specific model 	| AdaNet 	| [TII2024](https://ieeexplore.ieee.org/document/10065450) 	| ✅ 	| ✅ 	| ✅ 	| ✅ 	| ✅ 	| Originally developed for RUL task 	|
-| Task-specific model 	| DeepPLS 	| TNNLS2023 	| ✅ 	| ✅ 	|  	| ✅ 	|  	| Originally developed for PdM task 	|
-| Task-specific model 	| RSN 	| TII2023 	| ✅ 	| ✅ 	| ✅ 	| ✅ 	| ✅ 	| Originally developed for FD task 	|
-| Task-specific model 	| MCN 	| TSMC2024 	| ✅ 	| ✅ 	| ✅ 	| ✅ 	| ✅ 	| Originally developed for FD task 	|
-| Task-specific model 	| MCTAN 	| TNNLS2023 	| ✅ 	| ✅ 	| ✅ 	| ✅ 	| ✅ 	| Originally developed for SS task 	|
-| Task-specific model 	| DLformer 	| TNNLS2024 	| ✅ 	| ✅ 	| ✅ 	| ✅ 	| ✅ 	| Originally developed for RUL task 	|
-| Task-specific model 	| TR-LT 	| TII2022 	| ✅ 	| ✅ 	| ✅ 	| ✅ 	| ✅ 	| Originally developed for RUL task 	|
+| Task-specific model 	| DeepPLS 	| [TNNLS2023](https://dx.doi.org/10.1109/TNNLS.2022.3154090) 	| ✅ 	| ✅ 	|  	| ✅ 	|  	| Originally developed for PdM task 	|
+| Task-specific model 	| RSN 	| [TII2023](https://ieeexplore.ieee.org/document/10043748) 	| ✅ 	| ✅ 	| ✅ 	| ✅ 	| ✅ 	| Originally developed for FD task 	|
+| Task-specific model 	| MCN 	| [TSMC2024](https://ieeexplore.ieee.org/document/10443049?denied=) 	| ✅ 	| ✅ 	| ✅ 	| ✅ 	| ✅ 	| Originally developed for FD task 	|
+| Task-specific model 	| MCTAN 	| [TNNLS2023](https://ieeexplore.ieee.org/stamp/stamp.jsp?tp=&arnumber=9675827) 	| ✅ 	| ✅ 	| ✅ 	| ✅ 	| ✅ 	| Originally developed for SS task 	|
+| Task-specific model 	| DLformer 	| [TNNLS2024](https://ieeexplore.ieee.org/abstract/document/10078910) 	|  	|  	|  	| ✅ 	|  	| Originally developed for RUL task 	|
+| Task-specific model 	| TR-LT 	| [TII2022](https://ieeexplore.ieee.org/document/9756042) 	| ✅ 	| ✅ 	| ✅ 	| ✅ 	| ✅ 	| Originally developed for RUL task 	|
 
 ✨ Contribute your model right now to enhance your research impact! Your work will be widely used and cited by the community.
 Refer to the `models/Transformer.py` to see how to devise your model with PyITS.

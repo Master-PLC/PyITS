@@ -91,7 +91,7 @@ class SpectralConv1d(nn.Module):
 
 class Model(nn.Module):
     """
-    Paper link: https://arxiv.org/abs/2205.08897
+    Paper link: https://openreview.net/pdf?id=zTQdHSQUQWc
     """
     supported_tasks = ['soft_sensor', 'process_monitoring', 'fault_diagnosis', 'rul_estimation', 'predictive_maintenance']
 

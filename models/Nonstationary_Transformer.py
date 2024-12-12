@@ -50,7 +50,6 @@ class Model(nn.Module):
     def __init__(self, configs):
         super().__init__()
         self.task_name = configs.task_name
-        self.pred_len = configs.pred_len if self.task_name in ['process_monitoring'] else configs.seq_len
         self.seq_len = configs.seq_len
         self.label_len = configs.label_len
         self.output_attention = configs.output_attention
@@ -145,13 +144,13 @@ class Model(nn.Module):
         # Output
         if self.task_name in ['process_monitoring']:
             x_dec_new = torch.cat(
-                [x_enc[:, -self.label_len:, -self.c_out:], torch.zeros_like(x_dec[:, -self.pred_len:, :])], dim=1
-            ).to(x_enc.device).clone()  # [B, S+P, Dy]
+                [x_enc[:, -self.label_len:, -self.c_out:], torch.zeros_like(x_dec[:, -1:, :])], dim=1
+            ).to(x_enc.device).clone()  # [B, S+1, Dy]
 
-            dec_out = self.dec_embedding(x_dec_new, x_mark_dec)  # [B, S+P, d_model]
-            dec_out = self.decoder(dec_out, enc_out, x_mask=None, cross_mask=None, tau=tau, delta=delta)  # [B, S+P, Dy]
+            dec_out = self.dec_embedding(x_dec_new, x_mark_dec)  # [B, S+1, d_model]
+            dec_out = self.decoder(dec_out, enc_out, x_mask=None, cross_mask=None, tau=tau, delta=delta)  # [B, S+1, Dy]
             dec_out = dec_out * std_enc[..., -self.c_out:] + mean_enc[..., -self.c_out:]
-            dec_out = dec_out[:, -self.pred_len:, :]
+            dec_out = dec_out[:, -1:, :]
         else:
             dec_out = self.projection(enc_out)
 

@@ -13,7 +13,7 @@ from utils.tools import update_dict_multikeys
 warnings.filterwarnings('ignore')
 
 
-class ML_Soft_Sensor_Estimator(Base_Estimator):
+class ML_Process_Monitoring_Estimator(Base_Estimator):
     def __init__(self, args, dataset, model, device=torch.device('cpu'), logger=None):
         super().__init__(args, dataset, model, device, logger)
 
@@ -47,6 +47,9 @@ class ML_Soft_Sensor_Estimator(Base_Estimator):
 
         preds = self.model.predict(x)
         trues = y
+
+        preds = preds[:, -1:]
+        trues = trues[:, -1:]
 
         preds = self._check_numpy(preds)
         trues = self._check_numpy(trues)
@@ -94,12 +97,19 @@ class ML_Soft_Sensor_Estimator(Base_Estimator):
         preds = self.model.predict(x)
         trues = y
 
+        preds = preds[:, -1:]
+        trues = trues[:, -1:]
+
+        preds = self._check_numpy(preds)
+        trues = self._check_numpy(trues)
+
         self.logger.info(f'test shape: {preds.shape}, {trues.shape}')
         self.metric_test = metric_collector(
             self._check_numpy(preds), self._check_numpy(trues), task_name=self.task_name
         )
 
         if self.output_pred:
+            np.save(os.path.join(self.save_dir, 'input.npy'), x)
             np.save(os.path.join(self.save_dir, 'pred.npy'), preds)
             np.save(os.path.join(self.save_dir, 'true.npy'), trues)
 

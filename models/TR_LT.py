@@ -166,7 +166,7 @@ class Model(nn.Module):
     """A T^2-Tensor-Aided Multiscale Transformer for Remaining Useful Life Prediction in IIoT
     Paper link: https://ieeexplore.ieee.org/document/9756042
     """
-    supported_tasks = ['rul_estimation']
+    supported_tasks = ['soft_sensor', 'process_monitoring', 'rul_estimation', 'fault_diagnosis', 'predictive_maintenance']
 
     def __init__(self, configs):
         super().__init__()

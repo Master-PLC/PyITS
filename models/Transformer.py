@@ -11,14 +11,13 @@ class Model(nn.Module):
     """
     Vanilla Transformer
     with O(L^2) complexity
-    Paper link: https://proceedings.neurips.cc/paper/2017/file/3f5ee243547dee91fbd053c1c4a845aa-Paper.pdf
+    Paper link: https://dl.acm.org/doi/pdf/10.5555/3295222.3295349
     """
     supported_tasks = ['soft_sensor', 'process_monitoring', 'fault_diagnosis', 'rul_estimation', 'predictive_maintenance']
 
     def __init__(self, configs):
         super().__init__()
         self.task_name = configs.task_name
-        self.pred_len = configs.pred_len
         self.output_attention = configs.output_attention
         # Embedding
         self.enc_embedding = DataEmbedding(
@@ -76,7 +75,7 @@ class Model(nn.Module):
 
         else:
             self.projection = OutputBlock(
-                configs.d_model, configs.c_out, seq_len=configs.seq_len, pred_len=self.pred_len, 
+                configs.d_model, configs.c_out, seq_len=configs.seq_len, pred_len=configs.pred_len, 
                 task_name=self.task_name, dropout=configs.dropout
             )
 
@@ -88,7 +87,7 @@ class Model(nn.Module):
         if self.task_name in ['process_monitoring']:
             dec_out = self.dec_embedding(x_dec, x_mark_dec)  # [B, S+P, Dy]
             dec_out = self.decoder(dec_out, enc_out, x_mask=None, cross_mask=None, **kwargs)  # [B, S+P, Dy]
-            return dec_out[:, -self.pred_len:]
+            return dec_out[:, -1:]
 
         else:
             dec_out = self.projection(enc_out)

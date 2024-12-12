@@ -54,7 +54,7 @@ class Model(nn.Module):
     """DLSTM: A Novel Soft Sensor Modeling Approach Based on Difference-LSTM for Complex Industrial Process
     Paper link: https://ieeexplore.ieee.org/document/9531471
     """
-    supported_tasks = ['soft_sensor']
+    supported_tasks = ['soft_sensor', 'process_monitoring', 'fault_diagnosis', 'rul_estimation', 'predictive_maintenance']
 
     def __init__(self, configs):
         """

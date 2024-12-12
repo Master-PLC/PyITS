@@ -21,7 +21,7 @@ def prime_factors(n):
 
 
 class Model(nn.Module):
-    """Paper link: https://arxiv.org/abs/2204.13767
+    """Paper link: https://www.ijcai.org/proceedings/2022/0277.pdf
     """
     supported_tasks = ['soft_sensor', 'process_monitoring', 'rul_estimation', 'fault_diagnosis', 'predictive_maintenance']
 

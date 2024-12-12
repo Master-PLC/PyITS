@@ -6,7 +6,7 @@ from layers.Decoders import OutputBlock
 
 class Model(nn.Module):
     """FITS: Frequency Interpolation Time Series Forecasting
-    paper link: https://arxiv.org/html/2307.03756v3
+    paper link: https://openreview.net/pdf?id=bWcnvZ3qMb
     """
     supported_tasks = ['soft_sensor', 'process_monitoring', 'fault_diagnosis', 'rul_estimation', 'predictive_maintenance']
 
@@ -16,6 +16,7 @@ class Model(nn.Module):
         self.pred_len = configs.seq_len
         self.individual = configs.individual
         self.channels = configs.enc_in
+        self.task_name = configs.task_name
 
         self.dominance_freq = configs.cut_freq
         self.length_ratio = (self.seq_len + self.pred_len) / self.seq_len

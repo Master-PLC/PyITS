@@ -33,7 +33,7 @@ class Model(nn.Module):
     """MCTAN: A Novel Multichannel Temporal Attention-Based Network for Industrial Health Indicator Prediction
     Paper link: https://ieeexplore.ieee.org/stamp/stamp.jsp?tp=&arnumber=9675827
     """
-    supported_tasks = ['soft_sensor']
+    supported_tasks = ['soft_sensor', 'process_monitoring', 'rul_estimation', 'fault_diagnosis', 'predictive_maintenance']
 
     def __init__(self, configs):
         """

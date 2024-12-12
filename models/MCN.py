@@ -34,7 +34,7 @@ class Model(nn.Module):
     """MCN: An Interpretable Multiplication-Convolution Network for Equipment Intelligent Edge Diagnosis
     Paper link: https://ieeexplore.ieee.org/document/10443049?denied=
     """
-    supported_tasks = ['fault_diagnosis']
+    supported_tasks = ['soft_sensor', 'process_monitoring', 'rul_estimation', 'fault_diagnosis', 'predictive_maintenance']
 
     def __init__(self, configs):
         super().__init__()

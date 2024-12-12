@@ -19,7 +19,6 @@ class Model(nn.Module):
     def __init__(self, configs):
         super().__init__()
         self.task_name = configs.task_name
-        self.pred_len = configs.pred_len
         self.c_out = configs.c_out
 
         # Embedding
@@ -97,7 +96,7 @@ class Model(nn.Module):
             # x_dec: [B, S+P, Dy]
             dec_out = self.dec_embedding(x_dec, x_mark_dec)  # [B, S+P, d_model]
             dec_out = self.decoder(dec_out, enc_out, x_mask=None, cross_mask=None)  # [B, S+P, Dy]
-            dec_out = dec_out[:, -self.pred_len:, :]
+            dec_out = dec_out[:, -1:, :]
             dec_out = dec_out * std_enc[..., -self.c_out:] + mean_enc[..., -self.c_out:]
 
         else:

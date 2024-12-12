@@ -40,7 +40,6 @@ def parse_cmd_arguments():
     parser.add_argument('--seq_len', type=int, default=96, help='input sequence length')
     parser.add_argument('--label_len', type=int, default=48, help='start token length')
     parser.add_argument('--pred_len', type=int, default=96, help='prediction sequence length for model')
-    parser.add_argument('--inverse', action='store_true', help='inverse output data', default=False)
 
     # model define
     parser.add_argument('--expand', type=int, default=2, help='expansion factor for Mamba')
@@ -130,13 +129,9 @@ def parse_cmd_arguments():
     parser.add_argument('--min_lr', type=float, default=1e-6, help='min lr')
     parser.add_argument('--step_size', type=int, default=2, help='lr decay step')
 
-    # FreDF
+    # regularization
     parser.add_argument('--rec_lambda', type=float, default=1., help='weight of reconstruction function')
     parser.add_argument('--auxi_lambda', type=float, default=0., help='weight of auxilary function')
-    parser.add_argument('--auxi_loss', type=str, default='MAE', help='loss function')
-    parser.add_argument('--auxi_mode', type=str, default='fft', help='auxi loss mode, options: [fft, rfft]')
-    parser.add_argument('--auxi_type', type=str, default='complex', help='auxi loss type, options: [complex, mag, phase, mag-phase]')
-    parser.add_argument('--module_first', type=int, default=1, help='calculate module first then mean ')
 
     # GPU
     parser.add_argument('--gpu_ids', type=str, default='0', help='device ids of multile gpus')

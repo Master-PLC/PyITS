@@ -18,7 +18,7 @@ class Model(nn.Module):
         self.task_name = configs.task_name
         self.seq_len = configs.seq_len
         self.label_len = configs.label_len
-        self.pred_len = configs.pred_len if self.task_name in ['process_monitoring'] else configs.seq_len
+        self.pred_len = 1 if self.task_name in ['process_monitoring'] else configs.seq_len
         self.c_out = configs.c_out
 
         assert configs.e_layers == configs.d_layers, "Encoder and decoder layers must be equal"

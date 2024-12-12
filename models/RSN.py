@@ -9,7 +9,7 @@ class Model(nn.Module):
     """RSN: Restricted Sparse Networks for Rolling Bearing Fault Diagnosis
     Paper link: https://ieeexplore.ieee.org/document/10043748/
     """
-    supported_tasks = ['fault_diagnosis']
+    supported_tasks = ['soft_sensor', 'process_monitoring', 'rul_estimation', 'fault_diagnosis', 'predictive_maintenance']
 
     def __init__(self, configs):
         """

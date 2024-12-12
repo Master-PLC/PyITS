@@ -2,15 +2,9 @@ batch_size: 256
 dropout: 0.1
 num_epoch: 20
 patience: 5
-round: 1
-scheduler: none
+round: 2
 seed: 2024
-solver: linear
-step_size: 2
 target_idx:
 - 0
-enc_in: 5
-dec_in: 5
-c_out: 2
 d_model: 128
 d_ff: 128

@@ -17,7 +17,7 @@ class Model(nn.Module):
     """
     Autoformer is the first method to achieve the series-wise connection,
     with inherent O(LlogL) complexity
-    Paper link: https://openreview.net/pdf?id=I55UqU-M11y
+    Paper link: https://proceedings.neurips.cc/paper_files/paper/2021/file/bcc0d400288793e8bdcd7c19a8ac0c2b-Paper.pdf
     """
     supported_tasks = ['soft_sensor', 'process_monitoring', 'fault_diagnosis', 'rul_estimation', 'predictive_maintenance']
 
@@ -26,7 +26,6 @@ class Model(nn.Module):
         self.task_name = configs.task_name
         self.seq_len = configs.seq_len
         self.label_len = configs.label_len
-        self.pred_len = configs.pred_len
         self.output_attention = configs.output_attention
         self.c_out = configs.c_out
 
@@ -105,8 +104,8 @@ class Model(nn.Module):
 
         if self.task_name in ['process_monitoring']:
             # decomp init
-            mean = torch.mean(x_enc[..., -self.c_out:], dim=1).unsqueeze(1).repeat(1, self.pred_len, 1)  # [B, P, Dy]
-            zeros = torch.zeros([x_dec.shape[0], self.pred_len, x_dec.shape[2]], device=x_enc.device)  # [B, P, Dy]
+            mean = torch.mean(x_enc[..., -self.c_out:], dim=1).unsqueeze(1)  # [B, 1, Dy]
+            zeros = torch.zeros([x_dec.shape[0], 1, x_dec.shape[2]], device=x_enc.device)  # [B, P, Dy]
             seasonal_init, trend_init = self.decomp(x_enc[..., -self.c_out:])
 
             # decoder input
@@ -117,7 +116,7 @@ class Model(nn.Module):
             seasonal_part, trend_part = self.decoder(dec_out, enc_out, x_mask=None, cross_mask=None, trend=trend_init)  # [B, S+P, Dy], [B, S+P, Dy]
             # final
             dec_out = trend_part + seasonal_part
-            return dec_out[:, -self.pred_len:]
+            return dec_out[:, -1:]
         else:
             dec_out = self.projection(enc_out)
             return dec_out
