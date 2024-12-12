@@ -167,12 +167,14 @@ cython_debug/
 
 /dataset/*
 !/dataset/SRU
+!/dataset/Debutanizer
 
 /foo*
 
 /copy.sh
 /remove.sh
 /run_all.sh
+/simple_run_all.sh
 
 /download_ckpt_and_repo.sh
 

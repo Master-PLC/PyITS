@@ -92,7 +92,7 @@ The symbol `✅` indicates the algorithm is available for the corresponding task
 | Foundation model 	| FiLM 	| NIPS2022 	| ✅ 	| ✅ 	| ✅ 	| ✅ 	| ✅ 	| Other time-series foundational model 	|
 | Task-specific model 	| DLSTM 	| TII2022 	| ✅ 	| ✅ 	| ✅ 	| ✅ 	| ✅ 	| Originally developed for SS task 	|
 | Task-specific model 	| DTGRU 	| TII2023 	| ✅ 	| ✅ 	| ✅ 	| ✅ 	| ✅ 	| Originally developed for RUL task 	|
-| Task-specific model 	| AdaNet 	| TII2024 	| ✅ 	| ✅ 	| ✅ 	| ✅ 	| ✅ 	| Originally developed for RUL task 	|
+| Task-specific model 	| AdaNet 	| [TII2024](https://ieeexplore.ieee.org/document/10065450) 	| ✅ 	| ✅ 	| ✅ 	| ✅ 	| ✅ 	| Originally developed for RUL task 	|
 | Task-specific model 	| DeepPLS 	| TNNLS2023 	| ✅ 	| ✅ 	|  	| ✅ 	|  	| Originally developed for PdM task 	|
 | Task-specific model 	| RSN 	| TII2023 	| ✅ 	| ✅ 	| ✅ 	| ✅ 	| ✅ 	| Originally developed for FD task 	|
 | Task-specific model 	| MCN 	| TSMC2024 	| ✅ 	| ✅ 	| ✅ 	| ✅ 	| ✅ 	| Originally developed for FD task 	|
@@ -102,6 +102,30 @@ The symbol `✅` indicates the algorithm is available for the corresponding task
 
 ✨ Contribute your model right now to enhance your research impact! Your work will be widely used and cited by the community.
 Refer to the `models/Transformer.py` to see how to devise your model with PyITS.
+
+## ❖ Available Datasets
+
+PyITS incorporates several ITS datasets for task validation.
+The table below shows the availability of each dataset for different tasks. 
+The symbol `✅` indicates the dataset is available for the corresponding task (note that some datasets may lack the required labels for typical tasks).
+You can download each dataset either from the source link or from our zipped file, which is available on [Google Drive]() and [Baidu Disk]().
+
+
+
+| Dataset 	| Paper 	| Source 	| SS 	| PM 	| FD 	| RUL 	| PdM 	| Remarks 	|
+|---	|---	|---	|---	|---	|---	|---	|---	|---	|
+| SRU 	| [Control Eng. Pract.2003](https://www.sciencedirect.com/science/article/pii/S0967066103000790) 	| [github](https://github.com/cmkxiyang/DC-SRU-datasets-sharing) 	| ✅ 	| ✅ 	|  	|  	|  	| Sulfur Recovery Unit 	|
+| Debutanizer 	| [TII2020](https://ieeexplore.ieee.org/document/8654687) 	| [github](https://github.com/cmkxiyang/DC-SRU-datasets-sharing) 	| ✅ 	| ✅ 	|  	|  	|  	| Debutanizer Column 	|
+| TEP 	| [Measurement2023](https://www.sciencedirect.com/science/article/pii/S0263224123007595) 	| [github](https://github.com/camaramm/tennessee-eastman-profBraatz/tree/master) 	| ✅ 	| ✅ 	| ✅ 	|  	|  	| Tennessee Eastman Process 	|
+| CWRU 	| [arxiv](https://arxiv.org/abs/2407.14625) 	| [official](https://engineering.case.edu/bearingdatacenter/download-data-file) 	|  	|  	| ✅ 	|  	|  	| Case Western Reserve University Bearing Fault Dataset 	|
+| C-MAPSS 	| [ETFA2021](https://ieeexplore.ieee.org/abstract/document/9613682) 	| [official](https://data.nasa.gov/Aerospace/CMAPSS-Jet-Engine-Simulated-Data/ff5v-kuh6/about_data) 	|  	|  	|  	| ✅ 	|  	| Turbofan Engine Degradation Simulation from NASA 	|
+| NASA-Li-ion 	| [NASA2007](https://www.nasa.gov/intelligent-systems-division/discovery-and-systems-health/pcoe/pcoe-data-set-repository) 	| [official](https://phm-datasets.s3.amazonaws.com/NASA/5.+Battery+Data+Set.zip) 	|  	|  	|  	| ✅ 	|  	| Charging and discharging experiments on Li-Ion batteries from NASA 	|
+| SWaT 	| [CRITIS2016](https://link.springer.com/chapter/10.1007/978-3-319-71368-7_8) 	| [official](https://itrust.sutd.edu.sg/itrust-labs_datasets/dataset_info) 	|  	|  	|  	|  	| ✅ 	| Secure Water Treatment Equipment Anomaly Dataset 	|
+| SKAB 	| [Kaggle2020](https://www.kaggle.com/datasets/yuriykatser/skoltech-anomaly-benchmark-skab) 	| [kaggle](https://www.kaggle.com/datasets/yuriykatser/skoltech-anomaly-benchmark-skab) 	|  	|  	|  	|  	| ✅ 	| Skoltech Anomaly Benchmark 	|
+
+
+✨ Contribute related datasets right now to enhance your research impact! Your work will be widely used and cited by the community.
+Refer to the `data_provider/data_generator.py` to see how to incorporate your datasets with PyITS.
 
 ## ❖ PyITS Composition
 
@@ -120,10 +144,18 @@ git clone https://github.com/Master-PLC/PyITS.git
 
 ## ❖ Usage
 
-We present you a usage example of performing soft sensor with iTransformer as the model and SRU as the dataset below, you can click it to view.
+We present you two usage examples of performing soft sensor with iTransformer as the model and SRU as the dataset below, you can click it to view.
 
 <details open>
-<summary><b>Click here to see an example applying iTransformer on SRU for soft sensor:</b></summary>
+<summary><b>Click here to see an example applying iTransformer on SRU for process monitoring:</b></summary>
+
+``` bash
+python run.py --task_name process_monitoring --model iTransformer --data SRU --is_training 1
+```
+</details>
+
+<details>
+<summary><b>Click here to see an example applying iTransformer on SRU for process monitoring with your own python script:</b></summary>
 
 ``` python
 from data_provider.data_generator import Dataset_SRU
@@ -163,8 +195,10 @@ if __name__ == '__main__':
 ```
 Saving the above code as `toy.py`, you can run it with the following command:
 ``` bash
-python toy.py --task_name process_monitoring --model itransformer --data SRU --is_training 1 --pred_len 1
+python toy.py --task_name process_monitoring --model iTransformer --data SRU --is_training 1
 ```
+</details>
+
 ## ❖ Contribution and community
 
 We warmly invite you to contribute to PyITS. By committing your code:
